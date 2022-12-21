@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+    position: relative;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    font-family: Roboto, sans-serif;
+    user-select: none;
+    background-color: black;
+    color:white
+} 
+
+.container{
+    height: 500px;
+    width: 800px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 150px;
+}
+
+.containerBoard{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.data{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.board {
+    height: 330px;
+    width: 330px;
+    display: grid;
+    grid-template: repeat(3,1fr) / repeat(3,1fr)
+}
+
+.boardDesign{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    text-shadow: 0 0 3px white;
+}
+
+.boardDesign0,.boardDesign1,.boardDesign3, .boardDesign4{
+    border-right: 6px white solid;
+    border-bottom: 6px white solid;
+}
+
+.boardDesign2,.boardDesign5{
+    border-bottom: 6px white solid;
+}
+
+.boardDesign6,.boardDesign7{
+    border-right: 6px white solid;
+}
+
+.team{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team > div {
+    font-size: 30px;
+    height: 4vw;
+    width: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white
+}
+
+.contour{
+    border:3px purple solid;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.campTitle{
+    border:2px white solid;
+    border-radius:8px;
+    box-sizing: border-box;
+    padding: 0.5vw;
+    font-size: 15px;
+}
+
+.reset{
+    margin-top: 30px;
+    font-size: 25px;
+    position: relative;
+    z-index:2
+}
+
+.winnerDiv{
+    padding: 50px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.winnerMessage{
+    background-color: black;
+}
