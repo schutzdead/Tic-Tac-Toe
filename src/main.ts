@@ -7,8 +7,9 @@ const finalDiv = document.querySelector('.winnerDiv') as HTMLElement;
 const finalMessage = document.querySelector('.winnerMessage') as HTMLElement;
 const computerStart = document.querySelector('.campTitle') as HTMLElement;
 
-let computerChoice = 0;
-let winner = '';
+let computerChoice:number = 0;
+let winner:string = '';
+let fullOrNot:number = 0;
 
 const players = (team:string) => {
     return {
@@ -120,18 +121,31 @@ const displayController = (() => {
         computerChoice=Math.floor(Math.random()*8);  
     };
 
+    const matchNull = () => {
+        for(let i=0;i<9;i++){
+            if (boardCase[i].textContent !== "") fullOrNot+=1
+        }
+        if (fullOrNot===25) {
+            finalMessage.textContent=`No fucking winner`;
+            finalDiv.style.display="flex";
+        }
+    }
+
+    //il ne me compte pas le dernier
     boardCase.forEach(element => element.addEventListener('click', () => {
         if(element.textContent===IA.team) return;
+        if(element.textContent===playerOne.team) return;
         element.textContent=playerOne.team;
         randomPosition();
+        matchNull();
+        checkRow();
+        checkColumn();
+        checkDiagonal();  
+        win(); 
         for(let i=0;i<9;i++){
             if(computerChoice===9) computerChoice=0;
             if (boardCase[computerChoice].textContent === ""){
-                boardCase[computerChoice].textContent = IA.team;
-                checkRow();
-                checkColumn();
-                checkDiagonal();
-                win();
+                boardCase[computerChoice].textContent = IA.team;     
                 return;
             }else{
                 computerChoice += 1;
@@ -144,6 +158,7 @@ const displayController = (() => {
             boardCase[i].textContent="";
             finalDiv.style.display="none";
             winner="";
+            fullOrNot=0;
         };    
     };
 })();
